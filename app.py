@@ -12,7 +12,7 @@ import pickle
 # In[2]:
 
 
-web = Flask(__name__)
+app = Flask(__name__)
 rdf_model = pickle.load(open('rdf_model.pkl', 'rb'))
 nb_model = pickle.load(open('nb_model.pkl', 'rb'))
 knn_model = pickle.load(open('knn_model.pkl', 'rb'))
@@ -23,7 +23,7 @@ tfvec = pickle.load(open('tfvec.pkl', 'rb'))
 # In[3]:
 
 
-@web.route('/')
+@app.route('/')
 def home():
     return render_template('home.html')
 
@@ -31,7 +31,7 @@ def home():
 # In[4]:
 
 
-@web.route('/predict',methods=['POST'])
+@app.route('/predict',methods=['POST'])
 def predict():
     '''
     For rendering results on HTML GUI
@@ -52,7 +52,7 @@ def predict():
 
 
 if __name__ == "__main__":
-    web.run(debug=True)
+    app.run(debug=True)
 
 
 # In[ ]:
