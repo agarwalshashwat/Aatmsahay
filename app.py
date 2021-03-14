@@ -43,7 +43,7 @@ def predict():
     knn = le.inverse_transform(knn_model.predict(tfvec.transform(int_features).toarray()))
 
     output = rdf + nb + knn
-    output = ' '.join(output)
+    output = [' '.join(output)]
 
     return render_template('home.html', prediction_text='The disease you might be having is according to the three models i.e; by naive bayes classifier, random forest classifier adn k-nearest neibhour is {}'.format(output))
 
